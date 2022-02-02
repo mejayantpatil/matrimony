@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shortlist',
@@ -7,9 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShortlistComponent implements OnInit {
 
-  constructor() { }
+  public data: any[];
+  constructor(private router: Router) {
+    this.data = [];
+   }
 
   ngOnInit(): void {
+    this.data = [
+      {
+        id: '1',
+        firstName: 'Om',
+        lastName: 'Patil',
+        age: '30',
+        occupation: 'Software Engineer',
+        location: 'Pune' 
+      },
+      {
+        id: '2',
+        firstName: 'Om',
+        lastName: 'Patil',
+        age: '30',
+        occupation: 'Software Engineer',
+        location: 'Pune' 
+      },  
+    ]
   }
 
 }

@@ -4,6 +4,7 @@ import { ChatComponent } from './chat/chat.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SearchComponent } from './search/search.component';
 import { ShortlistComponent } from './shortlist/shortlist.component';
 
 const routes: Routes = [
@@ -21,6 +22,9 @@ const routes: Routes = [
   },
   {
     path: 'chat', component: ChatComponent
+  },
+  {
+    path: 'search', component: SearchComponent
   },
   {
     path: '', component: LoginComponent

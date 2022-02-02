@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ShortlistComponent } from './shortlist/shortlist.component';
 import { ChatComponent } from './chat/chat.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ChatComponent } from './chat/chat.component';
     ProfileComponent,
     ShortlistComponent,
     ChatComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
