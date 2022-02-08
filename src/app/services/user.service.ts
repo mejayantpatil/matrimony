@@ -1,18 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 
-@Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
-export class HomeComponent implements OnInit {
-  public data: any[];
-  constructor(private router: Router) {
-    this.data = [];
-   }
+export class UserService {
 
-  ngOnInit(): void {
+  private data: any[];
+  constructor() {
     this.data = [
       {
         id: '1',
@@ -20,7 +14,8 @@ export class HomeComponent implements OnInit {
         lastName: 'Patil',
         age: '30',
         occupation: 'Software Engineer',
-        location: 'Pune' 
+        location: 'Pune'
+
       },
       {
         id: '2',
@@ -46,16 +41,15 @@ export class HomeComponent implements OnInit {
         occupation: 'Software Engineer',
         location: 'Pune' 
       }
-    ]
-  }
+    ];
+   }
 
-  viewProfile(id: string) {
-    this.router.navigate(['profile'])
-  }
-  shortlist() {
-    this.router.navigate(['shortlist'])
-  }
-  sendMessage() {
-    this.router.navigate(['chat'])
-  }
+   
+   getUsers() {
+      return this.data;
+   }
+
+   getUser(id: string) {
+     return this.data.find(user=>user.id === id);
+   }
 }
