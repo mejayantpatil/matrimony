@@ -12,6 +12,10 @@ import { ShortlistComponent } from './components/shortlist/shortlist.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { SearchComponent } from './components/search/search.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,10 +27,12 @@ import { SearchComponent } from './components/search/search.component';
     ShortlistComponent,
     ChatComponent,
     SearchComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

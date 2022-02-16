@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { User } from '../models/user';
+import { SpinnerService } from './spinner.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class UserService {
 
   private data: any[];
-  constructor() {
+  constructor(private spinner: SpinnerService) {
     this.data = [
       {
         id: '1',
@@ -19,7 +21,7 @@ export class UserService {
       },
       {
         id: '2',
-        firstName: 'Om',
+        firstName: 'Rahul',
         lastName: 'Patil',
         age: '30',
         occupation: 'Software Engineer',
@@ -52,4 +54,17 @@ export class UserService {
    getUser(id: string) {
      return this.data.find(user=>user.id === id);
    }
+
+   updateUser(id: string, userData: User) {
+    this.spinner.showSpinner();
+     this.data.map((user,index)=>{
+        if(user.id === id) {
+          user.firstName = userData.firstName
+          user.lastName = userData.lastName
+        }
+     });
+     setTimeout(() => {
+      //  this.spinner.hideSpinner();
+     }, 1000);
+    }
 }

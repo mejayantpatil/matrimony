@@ -1,5 +1,14 @@
 <div class="row">
+ <div class="col-md-12 mt-3">
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    Edit your profile to get results matching to your profile!
+    <a class="btn-link" routerLink="/profile">Edit your Profile Now</a>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+ </div> 
 <div class="col-md-6 col-sm-12" style="height: 500px;">
+    <h3>Profile pictures</h3>
+    <hr>
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -43,19 +52,42 @@
           </div>
         </div>
       </div> -->
-      <h3>Om Patil</h3>
-      {{user|json}}
+      <h3>{{user.firstName}} {{user.lastName}}</h3>
       <hr>
           <h3>Personal Information</h3>
-          <div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">First Name: {{user.firstName}}</li>
-                <li class="list-group-item">Last Name: {{user.lastName}}</li>
-                <li class="list-group-item">Fathes Name: </li>
-                <li class="list-group-item">Mothers Name:</li>
-                <li class="list-group-item">Mothers Place:</li>
-              </ul>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-warning" type="button" (click)="editPersonalInfo()" *ngIf="!editPersonalInfoFlag">Edit</button>
+            <button class="btn btn-primary me-md-2" type="button" (click)="editPersonalInfoFlag=!editPersonalInfoFlag" *ngIf="editPersonalInfoFlag">Cancel</button>
+            <button class="btn btn-danger" type="button" (click)="updatePersonalInfo()" *ngIf="editPersonalInfoFlag">Update</button>
           </div>
+          <div>
+            <form [formGroup]="personalInfo">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">First Name: 
+                  <span *ngIf="!editPersonalInfoFlag">{{user.firstName}}</span>
+                  <input *ngIf="editPersonalInfoFlag" id="first-name" class="form-control" type="text" formControlName="firstName">
+                </li>
+                <li class="list-group-item">Last Name: 
+                  <span *ngIf="!editPersonalInfoFlag">{{user.lastName}}</span>
+                  <input *ngIf="editPersonalInfoFlag" id="last-name" class="form-control" type="text" formControlName="lastName">
+                </li>
+                <li class="list-group-item">Fathes Name: 
+                  <span *ngIf="!editPersonalInfoFlag">{{user.fatherName}}</span>
+                  <input *ngIf="editPersonalInfoFlag" id="father-name" class="form-control" type="text" formControlName="fatherName">
+                </li>
+                <li class="list-group-item">Mothers Name:
+                  <span *ngIf="!editPersonalInfoFlag">{{user.motherName}}</span>
+                  <input *ngIf="editPersonalInfoFlag" id="mother-name" class="form-control" type="text" formControlName="motherName">
+                </li>
+                <li class="list-group-item">Mother's Place:
+                  <span *ngIf="!editPersonalInfoFlag">{{user.mothersPlace}}</span>
+                  <input *ngIf="editPersonalInfoFlag" id="mothers-place" class="form-control" type="text" formControlName="mothersPlace">
+                
+                </li>
+              </ul>
+            </form>
+          </div>
+
           <hr>
           <h3>Address</h3>
           <div>
