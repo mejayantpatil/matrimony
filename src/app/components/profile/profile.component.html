@@ -90,15 +90,38 @@
 
           <hr>
           <h3>Address</h3>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-warning" type="button" (click)="editCurrentAddress()" *ngIf="!editCurrnetAddressFlag">Edit</button>
+            <button class="btn btn-primary me-md-2" type="button" (click)="editCurrnetAddressFlag=!editCurrnetAddressFlag" *ngIf="editCurrnetAddressFlag">Cancel</button>
+            <button class="btn btn-danger" type="button" (click)="updateCurrentAddress()" *ngIf="editCurrnetAddressFlag">Update</button>
+          </div>
           <div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Current Addres: </li>
-                <li class="list-group-item">City: </li>
-                <li class="list-group-item">Tehsil:</li>
-                <li class="list-group-item">District:</li>
-                <li class="list-group-item">State:</li>
-                <li class="list-group-item">Country:</li>
+            <form [formGroup]="currentAddressForm">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Current Addres:</li>
+                <li class="list-group-item">City: 
+                  <span *ngIf="!editCurrnetAddressFlag">{{currentAddress.city}}</span>
+                  <input *ngIf="editCurrnetAddressFlag" id="city" class="form-control" type="text" formControlName="city">
+                </li>
+                <li class="list-group-item">Tehsil:
+                  <span *ngIf="!editCurrnetAddressFlag">{{currentAddress.tehsil}}</span>
+                  <input *ngIf="editCurrnetAddressFlag" id="tehsil" class="form-control" type="text" formControlName="tehsil">
+                </li>
+                <li class="list-group-item">District:
+                  <span *ngIf="!editCurrnetAddressFlag">{{currentAddress.district}}</span>
+                  <input *ngIf="editCurrnetAddressFlag" id="district" class="form-control" type="text" formControlName="district">
+                </li>
+                <li class="list-group-item">State:
+                  <span *ngIf="!editCurrnetAddressFlag">{{currentAddress.state}}</span>
+                  <input *ngIf="editCurrnetAddressFlag" id="state" class="form-control" type="text" formControlName="state">
+                </li>
+                <li class="list-group-item">Country:
+                  <span *ngIf="!editCurrnetAddressFlag">{{currentAddress.country}}</span>
+                  <input *ngIf="editCurrnetAddressFlag" id="country" class="form-control" type="text" formControlName="country">
+                </li>
               </ul>
+            </form>
+            
             <hr>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Permenant Addres: </li>

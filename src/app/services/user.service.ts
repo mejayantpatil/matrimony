@@ -16,8 +16,23 @@ export class UserService {
         lastName: 'Patil',
         age: '30',
         occupation: 'Software Engineer',
-        location: 'Pune'
-
+        fatherName: '',
+        motherName: '',
+        mothersPlace:'',
+        location: 'Pune',
+        currentAddress: {
+          city: 'Pune',
+          tehsil: 'Mulshi',
+          district: 'Pune',
+          state: 'Maha',
+          country: 'India'
+        },
+        permanentAddress: {
+          city: 'Pune',
+          tehsil: 'Mulshi',
+          state: 'Maha',
+          country: 'India'
+        }
       },
       {
         id: '2',
@@ -25,7 +40,9 @@ export class UserService {
         lastName: 'Patil',
         age: '30',
         occupation: 'Software Engineer',
-        location: 'Pune' 
+        location: 'Pune',
+        currentAddress: {},
+        permanentAddress: {} 
       },
       {
         id: '3',
@@ -33,7 +50,9 @@ export class UserService {
         lastName: 'Patil',
         age: '30',
         occupation: 'Software Engineer',
-        location: 'Pune' 
+        location: 'Pune',
+        currentAddress: {},
+        permanentAddress: {}  
       },
       {
         id: '4',
@@ -41,7 +60,9 @@ export class UserService {
         lastName: 'Patil',
         age: '30',
         occupation: 'Software Engineer',
-        location: 'Pune' 
+        location: 'Pune', 
+        currentAddress: {},
+        permanentAddress: {} 
       }
     ];
    }
@@ -59,12 +80,11 @@ export class UserService {
     this.spinner.showSpinner();
      this.data.map((user,index)=>{
         if(user.id === id) {
-          user.firstName = userData.firstName
-          user.lastName = userData.lastName
+          this.data[index] = userData
         }
      });
      setTimeout(() => {
-      //  this.spinner.hideSpinner();
+       this.spinner.hideSpinner();
      }, 1000);
     }
 }
