@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.data = this.userSerivce.getUsers();
+    this.data = this.userSerivce.getUsers(); 
   }
 
   viewProfile(id: string) {
